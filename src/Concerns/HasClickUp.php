@@ -62,7 +62,7 @@ trait HasClickUp
     public function getClickupTokenAttribute(): ?string
     {
         if (! is_null($this->attributes['clickup_token'])) {
-            return Crypt::decryptString($this->attributes['clickup_token']);
+            return unserialize(Crypt::decryptString($this->attributes['clickup_token']));
         }
 
         return null;
